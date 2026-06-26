@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCUS LIFE</title>
+  <link rel="stylesheet" href="1.css">
 </head>
 <body>
+
+  <header class="hero">
+
+    <nav class="nav">
+      <div class="logo">FOCUS LIFE</div>
+      <ul>
+        <li>Home</li>
+        <li>Tools</li>
+        <li>Tips</li>
+        <li>About</li>
+      </ul>
+    </nav>
+
     
+    <div class="slideshow">
+      <img id="slideImage" alt="slide">
+    </div>
+
+    <div class="glow"></div>
+
+    <div class="hero-content">
+      <h1>小さな工夫が、<br>毎日を変える。</h1>
+      <p>集中・習慣・生活を整えるライフハックサイト</p>
+
+      <div class="buttons">
+
+        <a href="gacha.html" class="btn primary">今日のハック</a>
+
+        <a href="tool.html" class="btn">ツール</a>
+
+       </div>
+    </div>
+
+  </header>
+
+  
+  <script src="1.js"></script>
+
+  
+  <script>
+    window.addEventListener("load", () => {
+      if (!document.getElementById("slideImage")) {
+        console.error("slideImage が見つかりません");
+      }
+    });
+  </script>
+
 </body>
 </html>
