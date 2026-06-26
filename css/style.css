@@ -79,8 +79,8 @@ body {
 }
 
 .btn.primary {
-  background: #fff;
-  color: #000;
+  background: #000;
+  color: #fff;
 }
 
 /* ===== SLIDESHOW ===== */
@@ -133,16 +133,103 @@ body {
   gap: 20px;
 }
 
-.tool-card {
-  display: block;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #333;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: 0.2s;
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #0a0a0f, #111827);
+  color: white;
+}
+
+/* ヘッダー */
+.hero {
+  padding: 40px 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo {
   font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav a,
+.nav li {
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+/* タイトル */
+.hero-content h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.hero-content p {
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+/* グリッド */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* ⭐ガラスカード本体 */
+.tool-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 22px;
+  border-radius: 18px;
+
+  color: white;
+  text-decoration: none;
+
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+
+  transition: all 0.25s ease;
+  font-weight: 500;
+}
+
+/* ホバー */
+.tool-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* クリック感 */
+.tool-card:active {
+  transform: translateY(-2px) scale(0.98);
 }
 
 .tool-card:hover {
