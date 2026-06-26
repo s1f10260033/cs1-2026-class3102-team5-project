@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日のハックガチャ</title>
+  <link rel="stylesheet" href="1.css">
+</head>
+<body class="gacha-page">
+
+  <nav class="nav">
+  <div class="logo">FOCUS LIFE</div>
+  <ul>
+    <li><a href="1.html">Home</a></li>
+    <li><a href="tool.html">Tools</a></li>
+    <li>Tips</li>
+    <li>About</li>
+  </ul>
+</nav>
+  
+    <h1>🎰 今日のハックガチャ</h1>
+
+  <button id="drawBtn" class="btn">ガチャを回す</button>
+
+  <div id="cardContainer" class="card-container"></div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+
+      const btn = document.getElementById("drawBtn");
+      const container = document.getElementById("cardContainer");
+
+      const data = [
+        {
+          title: "🔮 今日の運勢",
+          list: ["いい流れの日", "集中できる日", "チャンスが来る日"]
+        },
+        {
+          title: "🍀 ラッキーアイテム",
+          list: ["イヤホン", "水筒", "ノート"]
+        },
+        {
+          title: "💬 名言",
+          list: ["継続は力なり", "失敗は成功のもと", "今日を全力で"]
+        },
+        {
+          title: "💡 ライフハック",
+          list: ["スマホを離す", "ToDoは3つまで", "朝に水を飲む"]
+        }
+      ];
+
+      function createCards() {
+        container.innerHTML = "";
+
+        data.forEach(item => {
+          const value = item.list[Math.floor(Math.random() * item.list.length)];
+
+          const card = document.createElement("div");
+          card.className = "card";
+
+          card.innerHTML = `
+            <div class="card-inner">
+              <div class="card-face card-back">タップしてめくる</div>
+              <div class="card-face card-front">
+                <div>
+                  <div>${item.title}</div>
+                  <div style="margin-top:10px;">${value}</div>
+                </div>
+              </div>
+            </div>
+          `;
+
+          card.addEventListener("click", () => {
+            card.classList.toggle("flipped");
+          });
+
+          container.appendChild(card);
+        });
+      }
+
+      btn.addEventListener("click", createCards);
+
+    });
+  </script>
+
+</body>
+</html>
