@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+</body>
+</html>
+<body class="bgm-page">
+
+<h1 class="bgm-title">環境BGM</h1>
+<p class="bgm-subtitle">作業やリラックスにぴったりの環境音</p>
+
+<div class="bgm-grid">
+
+    <div class="bgm-card">
+        <img src="img16.png" alt="雨">
+        <h2>雨</h2>
+        <button class="btn" onclick="playMusic('rain.mp3')">再生</button>
+    </div>
+
+    <div class="bgm-card">
+        <img src="img14.png" alt="森">
+        <h2>🌲 森</h2>
+        <button class="btn" onclick="playMusic('forest.mp3')">再生</button>
+    </div>
+
+    <div class="bgm-card">
+        <img src="img17.png" alt="カフェ">
+        <h2>カフェ</h2>
+        <button class="btn" onclick="playMusic('cafe.mp3')">再生</button>
+    </div>
+
+    <div class="bgm-card">
+        <img src="img15.png" alt="波">
+        <h2>波</h2>
+        <button class="btn" onclick="playMusic('wave.mp3')">再生</button>
+    </div>
+
+    <div class="bgm-card">
+        <img src="img18.png" alt="焚き火">
+        <h2>焚き火</h2>
+        <button class="btn" onclick="playMusic('fire.mp3')">再生</button>
+    </div>
+
+    <div class="bgm-card">
+        <img src="img19.png" alt="夜">
+        <h2>夜</h2>
+        <button class="btn" onclick="playMusic('night.mp3')">再生</button>
+    </div>
+
+</div>
+
+<audio id="player" loop></audio>
+
+<script src="js/bgm.js"></script>
+
+</body>
