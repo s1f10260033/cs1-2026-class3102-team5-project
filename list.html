@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>買い物リスト | FOCUS LIFE</title>
+  <link rel="stylesheet" href="css/list.css">
+</head>
+<body>
+    <header class="bgm-header">
+        <div class="site-logo"><a href="index.html">Focus Life</a></div>
+        <nav class="site-nav">
+            <a href="index.html">Home</a>
+            <a href="tool.html">Tools</a>
+            <a href="gacha.html">Tips</a>
+            <a href="lifehacks.html">Resources</a>
+        </nav>
+    </header>
+    <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">買い物リスト</h1>
+      <p class="page-subtitle">毎日の買い物をスマートに</p>
+    </div>
+
+    <div class="main-grid">
+      <section class="card">
+        <h2 class="card-title">現在のリスト</h2>
+        
+        <form class="add-form" id="todoForm">
+          <input type="text" id="itemInput" class="add-input" placeholder="買うものを入力..." required autocomplete="off">
+          <button type="submit" class="add-button">追加</button>
+        </form>
+
+        <ul class="shopping-list" id="shoppingList">
+          <li class="empty-message" id="emptyMessage">リストは空です。買うものを追加してください。</li>
+        </ul>
+      </section>
+
+      <aside class="card">
+        <h2 class="card-title">💡 よく使うもの</h2>
+        <div class="quick-tags">
+          <span class="quick-tag" onclick="quickAdd('卵')">+ 卵</span>
+          <span class="quick-tag" onclick="quickAdd('牛乳')">+ 牛乳</span>
+          <span class="quick-tag" onclick="quickAdd('食パン')">+ 食パン</span>
+          <span class="quick-tag" onclick="quickAdd('ティッシュ')">+ ティッシュ</span>
+          <span class="quick-tag" onclick="quickAdd('トイレットペーパー')">+ トイレットペーパー</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const todoForm = document.getElementById('todoForm');
+    const itemInput = document.getElementById('itemInput');
+    const shoppingList = document.getElementById('shoppingList');
+    const emptyMessage = document.getElementById('emptyMessage');
+
+    function checkEmpty() {
+      const items = shoppingList.querySelectorAll('.shopping-item');
+      if (items.length === 0) {
+        emptyMessage.style.display = 'block';
+      } else {
+        emptyMessage.style.display = 'none';
+      }
+    }
+
+    function addItem(text) {
+      const li = document.createElement('li');
+      li.className = 'shopping-item';
+
+      const label = document.createElement('label');
+      label.className = 'item-label';
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'item-checkbox';
+      
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          li.classList.add('completed');
+        } else {
+          li.classList.remove('completed');
+        }
+      });
+
+      const span = document.createElement('span');
+      span.className = 'item-text';
+      span.textContent = text;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'delete-button';
+      deleteBtn.innerHTML = '&times;';
+      
+      deleteBtn.addEventListener('click', function() {
+        li.remove();
+        checkEmpty();
+      });
+
+      label.appendChild(checkbox);
+      label.appendChild(span);
+      li.appendChild(label);
+      li.appendChild(deleteBtn);
+
+      shoppingList.insertBefore(li, shoppingList.firstChild);
+      checkEmpty();
+    }
+
+    todoForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const text = itemInput.value.trim();
+      if (text !== '') {
+        addItem(text);
+        itemInput.value = '';
+      }
+    });
+
+    function quickAdd(text) {
+      addItem(text);
+    }
+  </script>
+</body>
+</html>
