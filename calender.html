@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゴミの日カレンダー (東京都北区赤羽) - FOCUS LIFE</title>
+    <link rel="stylesheet" href="css/calender.css">
+</head>
+<body>
+    <header class="cal-header">
+        <div class="site-logo">Focus Life</div>
+        <nav class="site-nav">
+            <a href="index.html">Home</a>
+            <a href="tool.html">Tools</a>
+            <a href="gacha.html">Tips</a>
+            <a href="lifehacks.html">Resources</a>
+        </nav>
+    </header>
+
+<div class="container">
+    <header>
+        <h1>ゴミの日カレンダー</h1>
+        <div class="subtitle">東京都北区赤羽エリアの収集スケジュールです。</div>
+    </header>
+
+    <div class="grid">
+        <main class="schedule-section">
+            <div class="card">
+                <div class="card-title">
+                    <span>📅</span> 週間収集スケジュール
+                </div>
+                <div class="schedule-list">
+                    <div class="schedule-item item-burnable">
+                        <div class="day-badge">月</div>
+                        <div class="garbage-info">
+                            <div class="garbage-type">燃やすごみ</div>
+                            <div class="garbage-note">生ごみ、紙くず、衣類、プラスチック類など（朝8:00まで）</div>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="day-badge" style="color: var(--text-sub);">火</div>
+                        <div class="garbage-info">
+                            <div class="garbage-type" style="color: var(--text-sub);">収集なし</div>
+                            <div class="garbage-note">-</div>
+                        </div>
+                    </div>
+                    <div class="schedule-item item-recyclable">
+                        <div class="day-badge">水</div>
+                        <div class="garbage-info">
+                            <div class="garbage-type">資源（古紙・びん・缶・ペットボトル）</div>
+                            <div class="garbage-note">新聞・雑誌・段ボール、容器は軽くすすいで分別して排出（朝8:00まで）</div>
+                        </div>
+                    </div>
+                    <div class="schedule-item item-burnable">
+                        <div class="day-badge">木</div>
+                        <div class="garbage-info">
+                            <div class="garbage-type">燃やすごみ</div>
+                            <div class="garbage-note">生ごみ、紙くず、衣類、プラスチック類など（朝8:00まで）</div>
+                        </div>
+                    </div>
+                    <div class="schedule-item item-unburnable">
+                        <div class="day-badge">金</div>
+                        <div class="garbage-info">
+                            <div class="garbage-type">燃やさないごみ</div>
+                            <div class="garbage-note">第2・第4金曜日のみ収集。金属、ガラス、陶磁器、小型家電など</div>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="day-badge" style="color: var(--text-sub);">土</div>
+                        <div class="garbage-info">
+                            <div class="garbage-type" style="color: var(--text-sub);">収集なし</div>
+                            <div class="garbage-note">粗大ごみは事前申込制（粗大ごみ受付センターへ）</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar-section">
+            <div class="card next-notice" style="margin-bottom: 20px;">
+                <div class="next-label">次回の収集</div>
+                <div class="next-day">明日（月曜日）</div>
+                <div class="next-type">🔥 燃やすごみ</div>
+            </div>
+
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="card-title">🔔 リマインダー</div>
+                <div class="toggle-group">
+                    <span>前日夜（21:00）に通知</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-group">
+                    <span>当日朝（07:00）に通知</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">💡 北区の分別基準</div>
+                <div class="legend-list">
+                    <div class="legend-item">
+                        <div class="color-dot" style="background-color: var(--burnable);"></div>
+                        <span>燃やすごみ（プラ含む）</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-dot" style="background-color: var(--unburnable);"></div>
+                        <span>燃やさないごみ</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-dot" style="background-color: var(--recyclable);"></div>
+                        <span>資源（古紙・ボトル・缶）</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+<script>
+        const garbageSchedule = {
+            1: { name: "燃やすごみ", emoji: "🔥" },
+            3: { name: "資源（古紙・ボトル・缶）", emoji: "♻️" },
+            4: { name: "燃やすごみ", emoji: "🔥" },
+            5: { name: "燃やさないごみ", emoji: "💎" } 
+        };
+
+        function updateNextGarbage() {
+            const now = new Date();
+            const currentDay = now.getDay(); 
+            
+            let foundNext = false;
+            let daysUntil = 0;
+            let nextDayIndex = currentDay;
+
+            for (let i = 0; i < 7; i++) {
+                nextDayIndex = (currentDay + i) % 7;
+                
+                if (i === 0 && now.getHours() >= 8) {
+                    continue;
+                }
+
+                if (garbageSchedule[nextDayIndex]) {
+                    daysUntil = i;
+                    foundNext = true;
+                    break;
+                }
+            }
+
+            if (foundNext) {
+                const nextGarbage = garbageSchedule[nextDayIndex];
+                
+                // 日にち表現の判定
+                let dayText = "";
+                if (daysUntil === 0) dayText = "今日";
+                else if (daysUntil === 1) dayText = "明日";
+                else if (daysUntil === 2) dayText = "あさって";
+                else {
+                    const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
+                    dayText = `${dayNames[nextDayIndex]}曜日`;
+                }
+
+                document.querySelector('.next-day').textContent = `${dayText}`;
+                document.querySelector('.next-type').textContent = `${nextGarbage.emoji} ${nextGarbage.name}`;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', updateNextGarbage);
+    </script>
+
+</body>
+</html>
