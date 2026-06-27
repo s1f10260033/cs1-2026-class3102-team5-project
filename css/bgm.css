@@ -1,4 +1,3 @@
-/* --- ページ全体の基本設定 --- */
 .bgm-page {
     margin: 0;
     padding: 0;
@@ -9,7 +8,6 @@
     font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
 
-/* --- 追加：共通ヘッダーのスタイル --- */
 .bgm-header {
     max-width: 1000px;
     margin: 0 auto;
@@ -17,13 +15,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #ffffff;
 }
 
-.site-logo {
+.site-logo a{
     font-size: 1.1rem;
     font-weight: bold;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .site-nav a {
@@ -38,11 +39,10 @@
     color: #ffffff;
 }
 
-/* --- レイアウトコンテナ（これで圧迫感が解消されます） --- */
 .bgm-container {
     max-width: 1000px;
     width: 90%;
-    margin: 40px auto 60px auto; /* ヘッダーが入ったので上の余白を少し調整 */
+    margin: 40px auto 60px auto; 
     padding: 0;
 }
 
@@ -55,26 +55,24 @@
 
 .bgm-page p {
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.6); /* rebaのタイポを修正 */
+    color: rgba(255, 255, 255, 0.6); 
     margin-bottom: 45px;
 }
 
-/* --- グリッド配置 --- */
 .bgm-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3列 */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 30px;
 }
 
 @media (max-width: 768px) {
     .bgm-grid {
-        grid-template-columns: repeat(2, 1fr); /* スマホ・タブレットでは2列に */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
-/* --- カードのデザイン --- */
 .bgm-card {
-    border: 1px solid rgba(255, 255, 255, 0.08); /* soildのタイポを修正 */
+    border: 1px solid rgba(255, 255, 255, 0.08); 
     background: rgba(255, 255, 255, 0.04);
     border-radius: 16px;
     overflow: hidden;
@@ -87,7 +85,7 @@
 }
 
 .bgm-card:hover {
-    transform: translateY(-5px); /* ホバー時に少し浮き上がらせる演出 */
+    transform: translateY(-5px); 
     background: rgba(255, 255, 255, 0.07);
     border-color: rgba(255, 255, 255, 0.2);
 }
@@ -112,7 +110,6 @@
     color: rgba(255, 255, 255, 0.95);
 }
 
-/* --- ボタンのスタイル（.btn に統一） --- */
 .btn {
     background: rgba(255, 255, 255, 0.06);
     color: rgba(255, 255, 255, 0.8);
@@ -132,7 +129,6 @@
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 
-/* 再生中のスタイル */
 .btn.playing {
     background: rgba(0, 212, 255, 0.1);
     color: #00d4ff;

@@ -1,17 +1,14 @@
 :root {
-    /* カラーパレット */
-    --bg-color: #0d1117;       /* 深いネイビーブラックの背景 */
-    --card-bg: #161b22;        /* コンテンツカードの背景 */
-    --text-main: #ffffff;      /* メインの白文字 */
-    --text-sub: #8b949e;       /* 控えめなグレー文字 */
-    --accent-blue: #58a6ff;    /* トグルなどに使うアクセントブルー */
-    --border-color: #21262d;   /* 薄い境界線 */
+    --bg-color: #0d1117;       
+    --card-bg: #161b22;        
+    --text-main: #ffffff;     
+    --text-sub: #8b949e;       
+    --border-color: #21262d;   
     
-    /* ゴミカテゴリのカラー */
-    --burnable: #ff6e6e;       /* 可燃ごみ */
-    --unburnable: #54ebc7;     /* 不燃ごみ */
-    --recyclable: #49bbf2;     /* 資源ごみ */
-    --oversized: #f6c844;      /* 粗大ごみ */
+    --burnable: #ff6e6e;       
+    --unburnable: #54ebc7;     
+    --recyclable: #49bbf2;     
+    --oversized: #f6c844;      
 }
 
 * {
@@ -33,18 +30,18 @@ body {
     margin: 0 auto;
 }
 
-/* ヘッダーデザイン */
 header {
     margin-bottom: 40px;
 }
 
-.site-logo {
+.site-logo a{
     font-size: 1.1rem;
     font-weight: bold;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: 24px;
     color: var(--text-main);
+    text-decoration: none;
 }
 
 h1 {
@@ -59,7 +56,6 @@ h1 {
     font-size: 0.9rem;
 }
 
-/* 2カラムレイアウト */
 .grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -72,7 +68,6 @@ h1 {
     }
 }
 
-/* カードの共通スタイル */
 .card {
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -90,7 +85,6 @@ h1 {
     color: var(--text-main);
 }
 
-/* 週間スケジュールのアイテム */
 .schedule-list {
     display: flex;
     flex-direction: column;
@@ -133,14 +127,11 @@ h1 {
     font-size: 0.8rem;
     color: var(--text-sub);
 }
-
-/* 左側のボーダーカラー */
 .item-burnable { border-left-color: var(--burnable); }
 .item-unburnable { border-left-color: var(--unburnable); }
 .item-recyclable { border-left-color: var(--recyclable); }
 .item-oversized { border-left-color: var(--oversized); }
 
-/* ハイライト用ミニカード */
 .next-notice {
     text-align: center;
     padding: 28px 20px;
@@ -167,7 +158,6 @@ h1 {
     font-weight: bold;
 }
 
-/* リマインダー設定のトグルスイッチ */
 .toggle-group {
     display: flex;
     justify-content: space-between;
@@ -224,7 +214,6 @@ input:checked + .slider:before {
     transform: translateX(18px);
 }
 
-/* カテゴリ凡例 */
 .legend-list {
     display: flex;
     flex-direction: column;
