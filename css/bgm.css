@@ -1,0 +1,147 @@
+/* --- ページ全体の基本設定 --- */
+.bgm-page {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #0b0b0f;
+    color: #ffffff;
+    overflow-y: auto;
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+/* --- 追加：共通ヘッダーのスタイル --- */
+.bgm-header {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo {
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.site-nav a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.site-nav a:hover {
+    color: #ffffff;
+}
+
+/* --- レイアウトコンテナ（これで圧迫感が解消されます） --- */
+.bgm-container {
+    max-width: 1000px;
+    width: 90%;
+    margin: 40px auto 60px auto; /* ヘッダーが入ったので上の余白を少し調整 */
+    padding: 0;
+}
+
+.bgm-page h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.05px;
+}
+
+.bgm-page p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6); /* rebaのタイポを修正 */
+    margin-bottom: 45px;
+}
+
+/* --- グリッド配置 --- */
+.bgm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3列 */
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .bgm-grid {
+        grid-template-columns: repeat(2, 1fr); /* スマホ・タブレットでは2列に */
+    }
+}
+
+/* --- カードのデザイン --- */
+.bgm-card {
+    border: 1px solid rgba(255, 255, 255, 0.08); /* soildのタイポを修正 */
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 25px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                background-color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.bgm-card:hover {
+    transform: translateY(-5px); /* ホバー時に少し浮き上がらせる演出 */
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.bgm-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.bgm-card:hover img {
+    opacity: 1;
+}
+
+.bgm-card h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 20px 0 15px 0;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* --- ボタンのスタイル（.btn に統一） --- */
+.btn {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 32px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: #ffffff;
+    color: #0b0b0f;
+    border-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+}
+
+/* 再生中のスタイル */
+.btn.playing {
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+    border-color: rgba(0, 212, 255, 0.4);
+}
+
+.btn.playing:hover {
+    background: #00d4ff;
+    color: #0b0b0f;
+    border-color: #00d4ff;
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}

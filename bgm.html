@@ -1,59 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>環境BGM - FOCUS LIFE</title>
+    <link rel="stylesheet" href="css/bgm.css">
 </head>
 <body class="bgm-page">
 
-<h1 class="bgm-title">環境BGM</h1>
-<p class="bgm-subtitle">作業やリラックスにぴったりの環境音</p>
+    <header class="bgm-header">
+        <div class="site-logo">Focus Life</div>
+        <nav class="site-nav">
+            <a href="index.html">Home</a>
+            <a href="tool.html">Tools</a>
+            <a href="gacha.html">Tips</a>
+            <a href="lifehacks.html">Resources</a>
+        </nav>
+    </header>
 
-<div class="bgm-grid">
-
-    <div class="bgm-card">
-        <img src="images/img16.png" alt="雨">
-        <h2>雨</h2>
-        <button class="btn" onclick="playMusic('rain-sound.mp3')">再生</button>
+    <div class="bgm-container">
+        <h1 class="bgm-title">環境BGM</h1>
+        <p class="bgm-subtitle">作業やリラックスにピッタリの環境音</p>
+        
+        <div class="bgm-grid">
+            <div class="bgm-card">
+                <img src="images/img16.png" alt="雨">
+                <h2>雨</h2>
+                <button class="btn" onclick="playMusic(this, 'rain-sound.mp3')">再生</button>
+            </div>
+            
+            <div class="bgm-card">
+                <img src="images/img14.png" alt="森">
+                <h2>🌲 森</h2>
+                <button class="btn" onclick="playMusic(this, 'forest.mp3')">再生</button>
+            </div>
+            
+            <div class="bgm-card">
+                <img src="images/img17.png" alt="カフェ">
+                <h2>カフェ</h2>
+                <button class="btn" onclick="playMusic(this, 'cafe.mp3')">再生</button>
+            </div>
+            
+            <div class="bgm-card">
+                <img src="images/img15.png" alt="波">
+                <h2>波</h2>
+                <button class="btn" onclick="playMusic(this, 'sea.mp3')">再生</button>
+            </div>
+            
+            <div class="bgm-card">
+                <img src="images/img18.png" alt="焚き火">
+                <h2>焚き火</h2>
+                <button class="btn" onclick="playMusic(this, 'fire.mp3')">再生</button>
+            </div>
+            
+            <div class="bgm-card">
+                <img src="images/img19.png" alt="夜">
+                <h2>夜</h2>
+                <button class="btn" onclick="playMusic(this, 'night.mp3')">再生</button>
+            </div>
+        </div>
     </div>
 
-    <div class="bgm-card">
-        <img src="images/img14.png" alt="森">
-        <h2>🌲 森</h2>
-        <button class="btn" onclick="playMusic('forest.mp3')">再生</button>
-    </div>
-
-    <div class="bgm-card">
-        <img src="images/img17.png" alt="カフェ">
-        <h2>カフェ</h2>
-        <button class="btn" onclick="playMusic('cafe.mp3')">再生</button>
-    </div>
-
-    <div class="bgm-card">
-        <img src="images/img15.png" alt="波">
-        <h2>波</h2>
-        <button class="btn" onclick="playMusic('sea.mp3')">再生</button>
-    </div>
-
-    <div class="bgm-card">
-        <img src="images/img18.png" alt="焚き火">
-        <h2>焚き火</h2>
-        <button class="btn" onclick="playMusic('fire.mp3')">再生</button>
-    </div>
-
-    <div class="bgm-card">
-        <img src="images/img19.png" alt="夜">
-        <h2>夜</h2>
-        <button class="btn" onclick="playMusic('night.mp3')">再生</button>
-    </div>
-
-</div>
-
-<audio id="player" loop></audio>
-
-<script src="js/bgm.js"></script>
-
+    <audio id="player" loop></audio>
+    <script src="js/bgm.js"></script>
 </body>
 </html>
