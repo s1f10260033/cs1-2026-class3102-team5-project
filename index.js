@@ -5,18 +5,18 @@ window.addEventListener("DOMContentLoaded", () => {
   // =========================
 
   const images = [
-    "img1.png",
-    "img2.png",
-    "img3.png",
-    "img4.png",
-    "img5.png",
-    "img6.png",
-    "img7.png",
-    "img8.png",
-    "img9.png",
-    "img10.png",
-    "img11.png",
-    "img12.png",
+    "images/img1.png",
+    "images/img2.png",
+    "images/img3.png",
+    "images/img4.png",
+    "images/img5.png",
+    "images/img6.png",
+    "images/img7.png",
+    "images/img8.png",
+    "images/img9.png",
+    "images/img10.png",
+    "images/img11.png",
+    "images/img12.png",
   ];
 
   const slide = document.getElementById("slideImage");

@@ -1,0 +1,240 @@
+/* ライフハックセクション専用のスコープ */
+.lh-scope {
+  --lh-bg: #0f1117;
+  --lh-bg2: #1a1d27;
+  --lh-bg3: #23263a;
+  --lh-accent: #6c63ff;
+  --lh-accent2: #ff6584;
+  --lh-accent3: #43e97b;
+  --lh-accent4: #f7971e;
+  --lh-accent5: #38f9d7;
+  --lh-text: #e8eaf6;
+  --lh-text-muted: #9fa3b8;
+  --lh-border: #2e3250;
+  --lh-card-hover: #2a2d42;
+  --lh-tag-cooking: #ff6b6b;
+  --lh-tag-cleaning: #4ecdc4;
+  --lh-tag-storage: #45b7d1;
+  --lh-tag-daily: #f9ca24;
+  --lh-tag-work: #6c63ff;
+
+  font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  background: var(--lh-bg);
+  color: var(--lh-text);
+  line-height: 1.5;
+}
+
+.lh-scope * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== HERO ===== */
+.lh-hero {
+  background: linear-gradient(135deg, var(--lh-bg2) 0%, var(--lh-bg3) 100%);
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--lh-border);
+}
+.lh-hero h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(90deg, var(--lh-accent), var(--lh-accent5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.lh-hero p {
+  color: var(--lh-text-muted);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.7;
+}
+.lh-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.lh-stat-item { text-align: center; }
+.lh-stat-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--lh-accent);
+}
+.lh-stat-label {
+  font-size: 0.75rem;
+  color: var(--lh-text-muted);
+  margin-top: 0.2rem;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.lh-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ===== CHART SECTION ===== */
+.lh-chart-section {
+  background: var(--lh-bg2);
+  border: 1px solid var(--lh-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 700px) {
+  .lh-chart-section { grid-template-columns: 1fr; }
+}
+.lh-chart-box {
+  background: var(--lh-bg3);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+.lh-chart-box h3 {
+  font-size: 0.85rem;
+  color: var(--lh-text-muted);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.lh-chart-wrap { position: relative; height: 220px; }
+
+/* ===== CONTROLS ===== */
+.lh-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+.lh-search-wrap { flex: 1; min-width: 200px; position: relative; }
+.lh-search-wrap input {
+  width: 100%;
+  background: var(--lh-bg2);
+  border: 1px solid var(--lh-border);
+  border-radius: 10px;
+  padding: 0.65rem 1rem 0.65rem 2.5rem;
+  color: var(--lh-text);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.lh-search-wrap input:focus { border-color: var(--lh-accent); }
+.lh-search-wrap .lh-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--lh-text-muted);
+}
+.lh-filter-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.lh-filter-btn {
+  background: var(--lh-bg2);
+  border: 1px solid var(--lh-border);
+  border-radius: 20px;
+  padding: 0.4rem 0.9rem;
+  color: var(--lh-text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lh-filter-btn:hover { border-color: var(--lh-accent); color: var(--lh-text); }
+.lh-filter-btn.lh-active {
+  background: var(--lh-accent);
+  border-color: var(--lh-accent);
+  color: #fff;
+}
+.lh-sort-select {
+  background: var(--lh-bg2);
+  border: 1px solid var(--lh-border);
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  color: var(--lh-text);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* ===== GRID & CARD ===== */
+.lh-result-info { font-size: 0.85rem; color: var(--lh-text-muted); margin-bottom: 1rem; }
+.lh-result-info span { color: var(--lh-accent); font-weight: 700; }
+
+.lh-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.lh-card {
+  background: var(--lh-bg2);
+  border: 1px solid var(--lh-border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.lh-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(108, 99, 255, 0.15);
+  border-color: var(--lh-accent);
+}
+.lh-card-top { display: flex; justify-content: space-between; margin-bottom: 0.75rem; }
+.lh-card-num { font-size: 0.7rem; color: var(--lh-text-muted); background: var(--lh-bg3); padding: 0.2rem 0.5rem; border-radius: 6px; }
+.lh-card-tag { font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; }
+
+.lh-tag-料理・キッチン { background: rgba(255, 107, 107, 0.1); color: var(--lh-tag-cooking); }
+.lh-tag-掃除・洗濯 { background: rgba(78, 205, 196, 0.1); color: var(--lh-tag-cleaning); }
+.lh-tag-収納・片付け { background: rgba(69, 183, 209, 0.1); color: var(--lh-tag-storage); }
+.lh-tag-日常生活・便利 { background: rgba(249, 202, 36, 0.1); color: var(--lh-tag-daily); }
+.lh-tag-仕事・勉強・テック { background: rgba(108, 99, 255, 0.1); color: var(--lh-tag-work); }
+
+.lh-card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+.lh-card-desc { font-size: 0.82rem; color: var(--lh-text-muted); line-height: 1.6; }
+.lh-card-fav {
+  position: absolute; bottom: 0.75rem; right: 0.75rem;
+  background: none; border: none; cursor: pointer; font-size: 1.1rem; opacity: 0.4;
+}
+.lh-card-fav.lh-active { opacity: 1; }
+
+/* ===== MODAL ===== */
+.lh-modal-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  z-index: 9999; align-items: center; justify-content: center; padding: 1rem;
+}
+.lh-modal-overlay.lh-open { display: flex; }
+.lh-modal {
+  background: var(--lh-bg2); border: 1px solid var(--lh-border); border-radius: 20px;
+  padding: 2rem; max-width: 480px; width: 100%; position: relative;
+}
+.lh-modal-close {
+  position: absolute; top: 1rem; right: 1rem; background: var(--lh-bg3);
+  border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; color: var(--lh-text-muted);
+}
+.lh-modal-tag { font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; margin-bottom: 1rem; display: inline-block; }
+.lh-modal-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 1rem; }
+.lh-modal-desc { font-size: 0.9rem; color: var(--lh-text-muted); padding: 1rem; background: var(--lh-bg3); border-radius: 10px; border-left: 3px solid var(--lh-accent); }
+.lh-modal-actions { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+.lh-modal-btn { flex: 1; padding: 0.65rem; border-radius: 10px; border: none; cursor: pointer; font-weight: 600; }
+.lh-btn-fav { background: var(--lh-accent); color: #fff; }
+.lh-btn-copy { background: var(--lh-bg3); color: var(--lh-text); border: 1px solid var(--lh-border); }
+
+/* ===== UTILS ===== */
+.lh-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--lh-accent), var(--lh-accent5)); z-index: 10000; }
+.lh-toast {
+  position: fixed; bottom: 5rem; left: 50%; transform: translateX(-50%);
+  background: var(--lh-accent); color: #fff; padding: 0.6rem 1.5rem; border-radius: 30px;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 10001;
+}
+.lh-toast.lh-show { opacity: 1; }
+.lh-scroll-top {
+  position: fixed; bottom: 2rem; right: 2rem; background: var(--lh-accent);
+  border: none; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; color: #fff;
+  display: none; align-items: center; justify-content: center; z-index: 9998;
+}
+.lh-scroll-top.lh-visible { display: flex; }
+.lh-tab-wrap { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.lh-tab-btn { padding: 0.5rem 1.2rem; border-radius: 10px; border: 1px solid var(--lh-border); background: var(--lh-bg2); color: var(--lh-text-muted); cursor: pointer; }
+.lh-tab-btn.lh-active { background: var(--lh-accent); color: #fff; }
+.lh-empty { text-align: center; padding: 4rem; color: var(--lh-text-muted); }

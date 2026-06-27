@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>100のライフハック | FOCUS LIFE</title>
+  <link rel="stylesheet" href="css/lifehack.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="lh-scope">
+
+<div class="lh-progress-bar" id="lh-progressBar"></div>
+
+<header style="background: #0f1117; border-bottom: 1px solid #2e3250; padding: 0 2rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; height: 60px;">
+  <div style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0.05em; color: #e8eaf6;">FOCUS LIFE</div>
+  <nav>
+    <a href="#" style="color: #9fa3b8; text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem;">Home</a>
+    <a href="#" style="color: #9fa3b8; text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem;">Tools</a>
+    <a href="#lh-tips" style="color: #9fa3b8; text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem;">Tips</a>
+    <a href="#" style="color: #9fa3b8; text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem;">About</a>
+  </nav>
+</header>
+
+<div class="lh-hero">
+  <h1>100のライフハック</h1>
+  <p>小さな工夫が、毎日を変える。料理・掃除・収納・日常・仕事まで、すぐに使える実用的なヒントを集めました。</p>
+  <div class="lh-hero-stats">
+    <div class="lh-stat-item">
+      <div class="lh-stat-num" id="lh-statTotal">0</div>
+      <div class="lh-stat-label">ライフハック総数</div>
+    </div>
+    <div class="lh-stat-item">
+      <div class="lh-stat-num">5</div>
+      <div class="lh-stat-label">カテゴリ</div>
+    </div>
+    <div class="lh-stat-item">
+      <div class="lh-stat-num" id="lh-statFav">0</div>
+      <div class="lh-stat-label">お気に入り</div>
+    </div>
+  </div>
+</div>
+
+<div class="lh-container">
+
+  <!-- Charts -->
+  <div class="lh-chart-section">
+    <div class="lh-chart-box">
+      <h3>カテゴリ別分布</h3>
+      <div class="lh-chart-wrap">
+        <canvas id="lh-donutChart"></canvas>
+      </div>
+    </div>
+    <div class="lh-chart-box">
+      <h3>カテゴリ別ハック数</h3>
+      <div class="lh-chart-wrap">
+        <canvas id="lh-barChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="lh-tab-wrap">
+    <button class="lh-tab-btn lh-active" data-tab="all" onclick="switchTab('all')">すべて</button>
+    <button class="lh-tab-btn" data-tab="fav" onclick="switchTab('fav')">⭐ お気に入り</button>
+  </div>
+
+  <!-- Controls -->
+  <div class="lh-controls" id="lh-tips">
+    <div class="lh-search-wrap">
+      <span class="lh-icon">🔍</span>
+      <input type="text" id="lh-searchInput" placeholder="ライフハックを検索..." oninput="applyFilters()" />
+    </div>
+    <div class="lh-filter-btns" id="lh-filterBtns">
+      <button class="lh-filter-btn lh-active" data-cat="all" onclick="setFilter('all')">すべて</button>
+      <button class="lh-filter-btn" data-cat="料理・キッチン" onclick="setFilter('料理・キッチン')">🍳 料理・キッチン</button>
+      <button class="lh-filter-btn" data-cat="掃除・洗濯" onclick="setFilter('掃除・洗濯')">🧹 掃除・洗濯</button>
+      <button class="lh-filter-btn" data-cat="収納・片付け" onclick="setFilter('収納・片付け')">📦 収納・片付け</button>
+      <button class="lh-filter-btn" data-cat="日常生活・便利" onclick="setFilter('日常生活・便利')">💡 日常生活</button>
+      <button class="lh-filter-btn" data-cat="仕事・勉強・テック" onclick="setFilter('仕事・勉強・テック')">💻 仕事・テック</button>
+    </div>
+    <select class="lh-sort-select" id="lh-sortSelect" onchange="applyFilters()">
+      <option value="id">番号順</option>
+      <option value="cat">カテゴリ順</option>
+      <option value="title">タイトル順</option>
+    </select>
+  </div>
+
+  <div class="lh-result-info" id="lh-resultInfo"></div>
+  <div class="lh-grid" id="lh-grid"></div>
+  <div class="lh-empty" id="lh-emptyState" style="display:none;">
+    <div class="emoji">🔍</div>
+    <p>該当するライフハックが見つかりませんでした。</p>
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div class="lh-modal-overlay" id="lh-modalOverlay" onclick="closeModal(event)">
+  <div class="lh-modal" id="lh-modal">
+    <button class="lh-modal-close" onclick="closeModal()">✕</button>
+    <div class="lh-modal-num" id="lh-modalNum"></div>
+    <div class="lh-modal-tag" id="lh-modalTag"></div>
+    <div class="lh-modal-title" id="lh-modalTitle"></div>
+    <div class="lh-modal-desc" id="lh-modalDesc"></div>
+    <div class="lh-modal-actions">
+      <button class="lh-modal-btn lh-btn-fav" id="lh-modalFavBtn" onclick="toggleFavFromModal()">⭐ お気に入りに追加</button>
+      <button class="lh-modal-btn lh-btn-copy" onclick="copyHack()">📋 コピー</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="lh-toast" id="lh-toast">コピーしました！</div>
+
+<!-- Scroll top -->
+<button class="lh-scroll-top" id="lh-scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer style="text-align: center; padding: 2rem; color: #9fa3b8; font-size: 0.8rem; border-top: 1px solid #2e3250; margin-top: 3rem;">
+  <p>© 2025 FOCUS LIFE — 小さな工夫が、毎日を変える。</p>
+</footer>
+
+<script src="lihehack.js"></script>
+</body>
+</html>
