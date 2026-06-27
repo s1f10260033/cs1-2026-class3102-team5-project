@@ -13,10 +13,10 @@ let favorites = JSON.parse(localStorage.getItem('fl_favs') || '[]');
 let currentModalId = null;
 
 // ===== LOAD DATA =====
-async function loadHacks() {
+function loadHacks() {
   try {
-    const response = await fetch('lifehacks.json');
-    HACKS = await response.json();
+    // LIFE_HACKS_DATA は data.js から読み込まれます
+    HACKS = LIFE_HACKS_DATA;
     initCharts();
     applyFilters();
     document.getElementById('lh-statTotal').textContent = HACKS.length;
