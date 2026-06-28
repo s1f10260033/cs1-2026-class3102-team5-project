@@ -27,12 +27,41 @@ body {
   margin-bottom: 30px;
 }
 
-.header-logo {
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 5%;
+  background-color: #0d1117;
+  border-bottom: 1px solid #21262d;
+  margin-bottom: 30px;
+}
+.header-logo,
+.header-logo a,
+.header-logo a:link,
+.header-logo a:visited,
+.header-logo:link,
+.header-logo:visited {
   font-weight: 800 !important;
   letter-spacing: 1.8px;
   font-size: 1.25rem;
-  color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #ffffff !important;         
+  text-decoration: none !important;  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+.header-logo:hover,
+.header-logo a:hover,
+.header-logo:active,
+.header-logo a:active {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.header-logo:hover,
+.header-logo:active {
+  color: #ffffff !important;
+  text-decoration: none !important;
 }
 
 .header-nav a {
