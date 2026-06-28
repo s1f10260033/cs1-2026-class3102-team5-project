@@ -1,0 +1,638 @@
+/* ========================================
+   ルート変数
+   ======================================== */
+
+:root {
+    --bg-dark: #0a0a1a;
+    --bg-secondary: #1a1a2e;
+    --bg-tertiary: #16213e;
+    --text-light: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #00d084;
+    --accent-orange: #ff6b35;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   基本スタイル
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* ========================================
+   ナビゲーションバー
+   ======================================== */
+
+.navbar {
+    background-color: var(--bg-dark);
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-logo {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    letter-spacing: 0.05em;
+}
+
+.navbar-logo:hover {
+    color: var(--accent-color);
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    letter-spacing: 0.02em;
+}
+
+.navbar-menu li a:hover {
+    color: var(--text-light);
+}
+
+/* ========================================
+   メインレイアウト
+   ======================================== */
+
+.container {
+    display: flex;
+    height: calc(100vh - 70px);
+    overflow: hidden;
+}
+
+/* ========================================
+   サイドバー
+   ======================================== */
+
+.sidebar {
+    width: 280px;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    padding: 30px 20px;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-header h3 {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.add-btn {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.add-btn:hover {
+    transform: scale(1.2);
+}
+
+.chore-list {
+    list-style: none;
+}
+
+.chore-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.chore-item:hover {
+    background-color: rgba(0, 208, 132, 0.1);
+}
+
+.chore-item.active {
+    background-color: rgba(0, 208, 132, 0.2);
+    border-color: var(--accent-color);
+}
+
+.chore-icon {
+    font-size: 1.5em;
+}
+
+.chore-name {
+    font-size: 0.95em;
+    color: var(--text-light);
+}
+
+/* ========================================
+   メインコンテンツ
+   ======================================== */
+
+.main-content {
+    flex: 1;
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.current-task {
+    flex: 2;
+    min-width: 0;
+}
+
+/* ========================================
+   タスクヘッダー
+   ======================================== */
+
+.task-header {
+    margin-bottom: 30px;
+}
+
+.task-label {
+    font-size: 0.75em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+}
+
+.task-title-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.task-icon {
+    font-size: 2.5em;
+}
+
+.task-title-area h2 {
+    font-size: 2em;
+    color: var(--text-light);
+}
+
+/* ========================================
+   タイマーサークル
+   ======================================== */
+
+.timer-circle {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 40px auto;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.progress-ring-circle {
+    transition: stroke-dashoffset 0.35s;
+    stroke: var(--accent-color);
+    fill: transparent;
+    stroke-width: 8;
+    stroke-dasharray: 565;
+    stroke-dashoffset: 0;
+}
+
+.timer-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.timer-time {
+    display: block;
+    font-size: 3.5em;
+    font-weight: 700;
+    color: var(--text-light);
+    line-height: 1;
+}
+
+.timer-label {
+    display: block;
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 10px;
+}
+
+/* ========================================
+   タスクコントロール
+   ======================================== */
+
+.task-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 40px 0;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-pause {
+    background-color: var(--accent-color);
+    color: var(--bg-dark);
+}
+
+.btn-pause:hover {
+    background-color: #00b86f;
+    transform: translateY(-2px);
+}
+
+.btn-reset {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--text-secondary);
+}
+
+.btn-reset:hover {
+    color: var(--text-light);
+    border-color: var(--text-light);
+}
+
+.btn-skip {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--text-secondary);
+}
+
+.btn-skip:hover {
+    color: var(--text-light);
+    border-color: var(--text-light);
+}
+
+/* ========================================
+   タスク履歴
+   ======================================== */
+
+.task-history {
+    margin-top: 50px;
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.task-history h3 {
+    font-size: 0.9em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+.history-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filter-select {
+    background-color: var(--bg-tertiary);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table thead {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.history-table th {
+    text-align: left;
+    padding: 12px;
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.history-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95em;
+}
+
+.task-badge {
+    display: inline-block;
+    background-color: rgba(0, 208, 132, 0.1);
+    color: var(--accent-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.view-more-btn {
+    display: block;
+    margin-top: 20px;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-more-btn:hover {
+    transform: translateX(5px);
+}
+
+/* ========================================
+   統計パネル
+   ======================================== */
+
+.stats-panel {
+    flex: 1;
+    min-width: 0;
+}
+
+.stats-panel h3 {
+    font-size: 0.9em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-icon {
+    display: block;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.stat-change {
+    font-size: 0.75em;
+    color: var(--accent-color);
+}
+
+.stat-progress {
+    margin-top: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: var(--bg-tertiary);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+/* ========================================
+   モチベーションボックス
+   ======================================== */
+
+.motivation-box {
+    background-color: var(--bg-secondary);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.motivation-box blockquote {
+    font-size: 1.1em;
+    color: var(--text-light);
+    font-style: italic;
+    line-height: 1.8;
+}
+
+/* ========================================
+   スクロールバー
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00b86f;
+}
+
+/* ========================================
+   レスポンシブ対応
+   ======================================== */
+
+@media (max-width: 1200px) {
+    .main-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .stats-panel {
+        order: -1;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .navbar-menu {
+        gap: 20px;
+    }
+
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px;
+    }
+
+    .main-content {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .timer-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .timer-time {
+        font-size: 2.5em;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .task-history {
+        overflow-x: auto;
+    }
+
+    .history-table {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    .navbar-logo {
+        font-size: 1.1em;
+    }
+
+    .navbar-menu {
+        gap: 15px;
+        font-size: 0.85em;
+    }
+
+    .sidebar {
+        padding: 15px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .timer-circle {
+        width: 150px;
+        height: 150px;
+    }
+
+    .timer-time {
+        font-size: 2em;
+    }
+
+    .task-controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

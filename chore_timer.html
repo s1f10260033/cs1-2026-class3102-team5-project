@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家事タイマー - FOCUS LIFE</title>
+    <link rel="stylesheet" href="css/chore_timer_style.css">
+</head>
+<body>
+    <!-- ナビゲーションヘッダー -->
+    <nav class="navbar">
+        <div class="navbar-logo">FOCUS LIFE</div>
+        <ul class="navbar-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tool.html">Tools</a></li>
+            <li><a href="gacha.html">Tips</a></li>
+            <li><a href="lifehacks.html">Resources</a></li>
+        </ul>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <div class="container">
+        <!-- サイドバー -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>家事リスト</h3>
+                <button class="add-btn" id="addChoreBtn">+</button>
+            </div>
+            <ul class="chore-list" id="choreList">
+                <li class="chore-item active" data-chore-id="1">
+                    <span class="chore-icon">🧺</span>
+                    <span class="chore-name">洗濯</span>
+                </li>
+                <li class="chore-item" data-chore-id="2">
+                    <span class="chore-icon">🍽️</span>
+                    <span class="chore-name">食器洗い</span>
+                </li>
+                <li class="chore-item" data-chore-id="3">
+                    <span class="chore-icon">🧹</span>
+                    <span class="chore-name">掃除</span>
+                </li>
+                <li class="chore-item" data-chore-id="4">
+                    <span class="chore-icon">🧽</span>
+                    <span class="chore-name">トイレ掃除</span>
+                </li>
+                <li class="chore-item" data-chore-id="5">
+                    <span class="chore-icon">🍳</span>
+                    <span class="chore-name">料理</span>
+                </li>
+                <li class="chore-item" data-chore-id="6">
+                    <span class="chore-icon">🗑️</span>
+                    <span class="chore-name">ゴミ出し</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- メインエリア -->
+        <main class="main-content">
+            <!-- 現在のタスク -->
+            <section class="current-task">
+                <div class="task-header">
+                    <span class="task-label">CURRENT TASK</span>
+                    <div class="task-title-area">
+                        <span class="task-icon" id="currentTaskIcon">🧺</span>
+                        <h2 id="currentTaskName">洗濯</h2>
+                    </div>
+                </div>
+
+                <div class="timer-circle">
+                    <svg class="progress-ring" viewBox="0 0 200 200">
+                        <circle class="progress-ring-circle" cx="100" cy="100" r="90" />
+                    </svg>
+                    <div class="timer-display">
+                        <span class="timer-time" id="timerDisplay">28:47</span>
+                        <span class="timer-label">REMAINING</span>
+                    </div>
+                </div>
+
+                <div class="task-controls">
+                    <button class="btn btn-pause" id="pauseBtn">⏸ Pause</button>
+                    <button class="btn btn-reset" id="resetBtn">↻ Reset</button>
+                    <button class="btn btn-skip" id="skipBtn">⏭ Skip</button>
+                </div>
+
+                <!-- タスク履歴 -->
+                <div class="task-history">
+                    <h3>TASK HISTORY</h3>
+                    <div class="history-filters">
+                        <select id="taskFilter" class="filter-select">
+                            <option value="all">All Tasks</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                        </select>
+                        <select id="dateFilter" class="filter-select">
+                            <option value="today">Today</option>
+                            <option value="yesterday">Yesterday</option>
+                        </select>
+                    </div>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Completed At</th>
+                                <th>Time Taken</th>
+                                <th>Calories</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <tr>
+                                <td><span class="task-badge">🧺 Laundry (Washing & Folding)</span></td>
+                                <td>Today, 10:15 AM</td>
+                                <td>45m 32s</td>
+                                <td>120 cal</td>
+                            </tr>
+                            <tr>
+                                <td><span class="task-badge">🍽️ Dishes</span></td>
+                                <td>Today, 9:20 AM</td>
+                                <td>25m 18s</td>
+                                <td>65 cal</td>
+                            </tr>
+                            <tr>
+                                <td><span class="task-badge">🧽 Cleaning (Bathroom)</span></td>
+                                <td>Today, 8:10 AM</td>
+                                <td>35m 47s</td>
+                                <td>98 cal</td>
+                            </tr>
+                            <tr>
+                                <td><span class="task-badge">🍳 Cooking (Dinner)</span></td>
+                                <td>Yesterday, 6:30 PM</td>
+                                <td>1h 05m</td>
+                                <td>210 cal</td>
+                            </tr>
+                            <tr>
+                                <td><span class="task-badge">🧹 Vacuuming (Living Room)</span></td>
+                                <td>Yesterday, 5:15 PM</td>
+                                <td>20m 11s</td>
+                                <td>48 cal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="view-more-btn">View More History →</button>
+                </div>
+            </section>
+
+            <!-- 統計情報 -->
+            <aside class="stats-panel">
+                <h3>TODAY'S SUMMARY</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">✓</div>
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Tasks Completed</div>
+                        <div class="stat-change">+2 vs yesterday</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱</div>
+                        <div class="stat-value">3h 42m</div>
+                        <div class="stat-label">Total Time</div>
+                        <div class="stat-change">+48m vs yesterday</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value">612</div>
+                        <div class="stat-label">Calories Burned</div>
+                        <div class="stat-change">+86 vs yesterday</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-value">92%</div>
+                        <div class="stat-label">Daily Goal</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- モチベーション -->
+                <div class="motivation-box">
+                    <blockquote>
+                        "Small consistent efforts lead to big results."
+                    </blockquote>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="js/chore_timer_script.js"></script>
+</body>
+</html>
