@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDoリスト | FOCUS LIFE</title>
+  <link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-logo">FOCUS LIFE</div>
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="tool.html">Tools</a>
+            <a href="gacha.html">Tips</a>
+            <a href="lifehacks.html">Resources</a>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="page-header">
+        <h1 class="page-title">📝 ToDoリスト</h1>
+        <p class="page-subtitle">ジャンルごとにタスクを整理して、効率よくライフハックを実行しましょう。</p>
+    </div>
+    <div class="todo-layout">
+        <section class="card">
+            <h2 class="card-title">タスクを追加する</h2>
+            <form class="todo-form" id="todoForm">
+                <div class="input-row">
+                    <input type="text" id="taskInput" class="todo-input" placeholder="やることを入力してください..." required autocomplete="off">
+                    <select id="genreSelect" class="genre-select">
+                        <option value="cooking">料理・キッチン</option>
+                        <option value="cleaning">掃除・洗濯</option>
+                        <option value="organizing">収納・片付け</option>
+                        <option value="daily">日常生活・便利</option>
+                        <option value="work">仕事・勉強・テック</option>
+                    </select>
+                    <button type="submit" class="add-button">追加</button>
+                </div>
+            </form>
+            <ul class="todo-list" id="todoList">
+                <li class="empty-message" id="emptyMessage">登録されたタスクはありません。</li>
+            </ul>
+        </section>
+    </div>
+</main>
+<script>
+    const todoForm = document.getElementById('todoForm');
+    const taskInput = document.getElementById('taskInput');
+    const genreSelect = document.getElementById('genreSelect');
+    const todoList = document.getElementById('todoList');
+    const emptyMessage = document.getElementById('emptyMessage');
+
+    const genreNames = {
+      cooking: '料理・キッチン',
+      cleaning: '掃除・洗濯',
+      organizing: '収納・片付け',
+      daily: '日常生活・便利',
+      work: '仕事・勉強・テック'
+    };
+
+    function checkEmpty() {
+      const items = todoList.querySelectorAll('.todo-item');
+      if (items.length === 0) {
+        emptyMessage.style.display = 'block';
+      } else {
+        emptyMessage.style.display = 'none';
+      }
+    }
+
+    function addTask(text, genre) {
+      const li = document.createElement('li');
+      li.className = `todo-item genre-${genre}`;
+
+      const leftContent = document.createElement('div');
+      leftContent.className = 'item-left';
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'todo-checkbox';
+
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          li.classList.add('completed');
+        } else {
+          li.classList.remove('completed');
+        }
+      });
+
+      const badge = document.createElement('span');
+      badge.className = 'genre-badge';
+      badge.textContent = genreNames[genre];
+
+      const span = document.createElement('span');
+      span.className = 'todo-text';
+      span.textContent = text;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'delete-button';
+      deleteBtn.innerHTML = '&times;';
+      
+      deleteBtn.addEventListener('click', function() {
+        li.remove();
+        checkEmpty();
+      });
+
+      leftContent.appendChild(checkbox);
+      leftContent.appendChild(badge);
+      leftContent.appendChild(span);
+      li.appendChild(leftContent);
+      li.appendChild(deleteBtn);
+
+      todoList.insertBefore(li, todoList.firstChild);
+      
+      checkEmpty();
+    }
+
+    todoForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const text = taskInput.value.trim();
+      const genre = genreSelect.value;
+      
+      if (text !== '') {
+        addTask(text, genre);
+        taskInput.value = ''; 
+      }
+    });
+  </script>
+</body>
+</html>
