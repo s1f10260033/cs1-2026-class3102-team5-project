@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>献立メーカー</title>
+    <link rel="stylesheet" href="css/menu_style.css">
+</head>
+<body>
+    <!-- ナビゲーションヘッダー -->
+    <nav class="navbar">
+        <a href="index.html" style="text-decoration: none; color: inherit;"><div class="navbar-logo">FOCUS LIFE</div></a>
+        <ul class="navbar-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tool.html">Tools</a></li>
+            <li><a href="gacha.html">Tips</a></li>
+            <li><a href="lifehacks.html">Resources</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">献立メーカー</h1>
+            <p class="tagline">毎日の献立選びを簡単に。5つのカテゴリーから100種類の料理を選ぼう。</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- フィルタリングセクション -->
+        <section class="filter-section">
+            <div class="filter-group">
+                <label for="category-filter">カテゴリー:</label>
+                <select id="category-filter">
+                    <option value="">すべて表示</option>
+                    <option value="和食">和食</option>
+                    <option value="洋食">洋食</option>
+                    <option value="中華">中華</option>
+                    <option value="肉料理">肉料理</option>
+                    <option value="時短・節約料理">時短・節約料理</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="time-filter">調理時間:</label>
+                <select id="time-filter">
+                    <option value="">すべて表示</option>
+                    <option value="15">15分以内</option>
+                    <option value="30">30分以内</option>
+                    <option value="45">45分以内</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="cost-filter">費用目安:</label>
+                <select id="cost-filter">
+                    <option value="">すべて表示</option>
+                    <option value="300">300円以下</option>
+                    <option value="400">400円以下</option>
+                    <option value="500">500円以下</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="difficulty-filter">難易度:</label>
+                <select id="difficulty-filter">
+                    <option value="">すべて表示</option>
+                    <option value="初級">初級</option>
+                    <option value="中級">中級</option>
+                    <option value="上級">上級</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="sort-filter">並び替え:</label>
+                <select id="sort-filter">
+                    <option value="default">デフォルト</option>
+                    <option value="time-asc">調理時間が短い順</option>
+                    <option value="cost-asc">費用が安い順</option>
+                    <option value="calories-asc">カロリーが低い順</option>
+                </select>
+            </div>
+
+            <button id="reset-filters" class="reset-btn">フィルタをリセット</button>
+        </section>
+
+        <!-- 献立一覧セクション -->
+        <section class="menu-grid" id="menu-grid">
+            <!-- JavaScriptで動的に生成される -->
+        </section>
+    </main>
+
+    <!-- 献立詳細モーダル -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modal-body">
+                <!-- 詳細情報がここに表示される -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 献立メーカー. All rights reserved.</p>
+    </footer>
+
+    <script src="js/menu_data.js"></script>
+    <script src="js/menu_script.js"></script>
+</body>
+</html>
